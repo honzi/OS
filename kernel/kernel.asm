@@ -21,9 +21,12 @@ print_string:
 .repeat:              ;print each character
     lodsb
     cmp al,0
-    je ret            ;until last char is 0
+    je .done          ;until last char is 0
     int 10h
     jmp .repeat
+
+.done:
+    ret
 ;------------------------------------------;
 times 510-($-$$) db 0
 dw 0xAA55
