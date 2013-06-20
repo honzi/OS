@@ -1,11 +1,11 @@
 BITS 16
 ;------------------------------------------;
-mov ax,07C0h
+mov ax,07C0h       ;setup 4k stack after bl
 add ax,288
 mov ss,ax
 mov sp,4096
 
-mov ax,07C0h
+mov ax,07C0h       ;set data segment
 mov ds,ax
 
 mov si,text_string
@@ -18,15 +18,15 @@ text_string db 'OS',0
 print_string:
     mov ah,0Eh
 
-.repeat:              ;print each character
+.repeat:
     lodsb
     cmp al,0
-    je .done          ;until last char is 0
+    je .done
     int 10h
     jmp .repeat
 
 .done:
     ret
 ;------------------------------------------;
-times 510-($-$$) db 0
-dw 0xAA55
+times 510-($-$$) db 0  ;fill bsector with 0
+dw 0xAA55              ;standard boot sig
