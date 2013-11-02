@@ -1,21 +1,20 @@
 BITS 16
-;------------------------------------------;
-mov ax,07C0h       ;setup 4k stack after bl
+mov ax,07C0h   ;setup 4k stack after bl
 add ax,288
 mov ss,ax
 mov sp,4096
 
-mov ax,07C0h       ;set data segment
+mov ax,07C0h   ;set data segment
 mov ds,ax
 
-mov si,text_string
-call print_string
+mov si,str0
+call print_str
 
 jmp $
-;------------------------------------------;
-text_string db 'OS',0
-;------------------------------------------;
-print_string:
+;----------------------;
+str0 db 'OS v2013.11.02',13,10,'by http://iterami.com',0
+;----------------------;
+print_str:
     mov ah,0Eh
 
 .repeat:
@@ -27,6 +26,6 @@ print_string:
 
 .done:
     ret
-;------------------------------------------;
-times 510-($-$$) db 0  ;fill bsector with 0
-dw 0xAA55              ;standard boot sig
+;----------------------;
+times 510-($-$$) db 0
+dw 0xAA55             ;standard boot sig
