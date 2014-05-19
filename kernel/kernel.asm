@@ -30,6 +30,9 @@ print_string:
         int 10h
         jmp .loop
 
+reboot:
+    jmp 0ffffh:0000h
+
 return:
     ret
 ;----------------------;
