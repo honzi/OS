@@ -33,7 +33,7 @@ print_string:
         jmp .loop
 
 reboot:
-    jmp 0ffffh:0000h
+    int 19h
 
 return:
     ret
