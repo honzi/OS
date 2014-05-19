@@ -1,16 +1,24 @@
 BITS 16
+
+  ;setup stack
+cli
 mov ax,07c0h
 add ax,288
 mov ss,ax
 mov sp,4096
+sti
 
+  ;string offset
 mov ax,07c0h
 mov ds,ax
 
+  ;print string_os
 mov si,string_os
 call print_string
 
-jmp $
+  ;hang
+cli
+hlt
 ;----------------------;
 print_string:
     mov ah,0eh
