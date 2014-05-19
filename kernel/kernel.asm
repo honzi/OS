@@ -16,11 +16,13 @@ mov ds,ax
 mov si,string_os
 call print_string
 
-  ;hang
-cli
-hlt
+  ;wait for keyboard input before reboot
+mov ah,00h
+int 16h
+call reboot
 ;----------------------;
 print_string:
+      ;write character, tty mode
     mov ah,0eh
 
     .loop:
@@ -36,7 +38,7 @@ reboot:
 return:
     ret
 ;----------------------;
-string_os db 'OS v2014.05.18',10,13,'by http://iterami.com',0
+string_os db 'http://iterami.com OS v2014.05.19',10,13,'Press any key to reboot.',0
 ;----------------------;
 times 510-($-$$) db 0
 dw 0xaa55
