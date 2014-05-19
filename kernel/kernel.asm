@@ -26,12 +26,12 @@ print_string:
     .loop:
         lodsb
         cmp al,0
-          je .done
+          je return
         int 10h
         jmp .loop
 
-    .done:
-        ret
+return:
+    ret
 ;----------------------;
 string_os db 'OS v2014.05.18',10,13,'by http://iterami.com',0
 ;----------------------;
