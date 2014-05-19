@@ -1,10 +1,10 @@
 BITS 16
-mov ax,07C0h
+mov ax,07c0h
 add ax,288
 mov ss,ax
 mov sp,4096
 
-mov ax,07C0h
+mov ax,07c0h
 mov ds,ax
 
 mov si,string_os
@@ -13,7 +13,7 @@ call print_string
 jmp $
 ;----------------------;
 print_string:
-    mov ah,0Eh
+    mov ah,0eh
 
     .loop:
         lodsb
