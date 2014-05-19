@@ -1,3 +1,8 @@
-Beginnings of a custom OS, written in assembly.
+A custom OS, probably maybe written in NASM assembly for x86 PCs.
 
-Currently written in NASM assembly for x86 PCs, based off code from http://mikeos.berlios.de/write-your-own-os.html.
+Set it up with these commands...
+
+    nasm -f bin kernel.asm -o os.bin
+    dd if=os.bin of=os.img bs=512 count=1
+
+...and run it using your favorite virtual machine software.
