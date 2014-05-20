@@ -1,9 +1,11 @@
 # Compiled source #
 ###################
+*.bin
 *.com
 *.class
 *.dll
 *.exe
+*.img
 *.o
 *.so
 
