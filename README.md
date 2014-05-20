@@ -1,8 +1,7 @@
 A custom OS, probably maybe written in NASM assembly for x86 PCs.
 
-Set it up with these commands...
+On linux, you can set it up by running linux-buildosimg.sh:
 
-    nasm -f bin kernel/kernel.asm -o os.bin
-    dd if=os.bin of=os.img bs=512 count=1
+    sh linux-buildosimg.sh
 
-...and run it using your favorite virtual machine software.
+...and run the created os.img file using your favorite virtual machine software.
