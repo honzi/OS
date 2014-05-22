@@ -16,14 +16,23 @@ mov ds,ax
 mov si,string_os_info
   call os_print_string
 call os_print_newline
-mov si,string_os_reboot
-  call os_print_string
 
-  ;wait for keyboard input before reboot
-mov ah,00h
-int 16h
-call os_reboot
+  ;begin cli loop
+call os_cli
 ;----------------------;
+os_cli:
+    pusha
+    mov si,string_os_cli
+    call os_print_string
+
+      ;wait for keyboard input
+    mov ah,00h
+    int 16h
+
+    popa
+    call os_print_newline
+    call os_cli
+
 os_print_newline:
     pusha
     mov ah,0eh ;tty mode write characters
@@ -54,8 +63,8 @@ os_print_string:
 os_reboot:
     int 19h
 ;----------------------;
-string_os_info db 'http://iterami.com OS v2014.05.20',0
-string_os_reboot db 'Press any key to reboot.',0
+string_os_cli db '>',0
+string_os_info db 'http://iterami.com OS v2014.05.22',0
 ;----------------------;
 times 510-($-$$) db 0
 dw 0xaa55
