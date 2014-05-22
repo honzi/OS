@@ -15,23 +15,34 @@ mov ds,ax
   ;print strings
 mov si,string_os_info
   call os_print_string
-call os_print_newline
 
   ;begin cli loop
 call os_cli
 ;----------------------;
 os_cli:
     pusha
+    call os_print_newline
     mov si,string_os_cli
     call os_print_string
 
-      ;wait for keyboard input
-    mov ah,00h
-    int 16h
+    .loop:
+          ;wait for keyboard input
+        mov ah,00h
+        int 16h
 
-    popa
-    call os_print_newline
-    call os_cli
+          ;if enter pressed, new cli
+        cmp al,0x0D
+          je .done
+
+          ;else print character
+        mov ah,0eh ;tty mode write characters
+        int 10h
+
+        jmp .loop
+
+    .done:
+        popa
+        call os_cli
 
 os_print_newline:
     pusha
