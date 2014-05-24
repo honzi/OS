@@ -31,7 +31,7 @@ os_cli:
         int 16h
 
           ;if enter pressed, new cli
-        cmp al,0x0D
+        cmp al,0x0d
           je .done
 
           ;else print character
