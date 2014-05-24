@@ -34,10 +34,21 @@ os_cli:
         cmp al,0x0d
           je .done
 
-          ;else print character
+          ;print character
         mov ah,0eh ;tty mode write characters
         int 10h
 
+          ;if backspace pressed, handle it
+        cmp al,0x08
+          je .backspace
+
+        jmp .loop
+
+    .backspace:
+        mov al,' '
+        int 10h
+        mov al,0x08
+        int 10h
         jmp .loop
 
     .done:
