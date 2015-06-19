@@ -90,7 +90,7 @@ os_reboot:
 ;----------------------;
 string_os_cli_invalid db 'Invalid command.',0
 string_os_cli_prompt db '>',0
-string_os_info db 'http://iterami.com OS v2014.05.24',0
+string_os_info db 'iterami/OS v20150618.0',0
 ;----------------------;
 times 510-($-$$) db 0
 dw 0xaa55
