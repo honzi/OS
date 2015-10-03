@@ -2,11 +2,11 @@
 
 # No arguments.
 
-# create os.bin
-nasm -f bin kernel/kernel.asm -o os.bin
+# create os-asm.bin
+nasm -f bin kernel/kernel.asm -o os-asm.bin
 
-# use os.bin to create os.img
-dd if=os.bin of=os.img bs=512 count=1
+# use os-asm.bin to create os-asm.img
+dd if=os-asm.bin of=os-asm.img bs=512 count=1
 
-# delete os.bin
-rm os.bin
+# delete os-asm.bin
+rm os-asm.bin
