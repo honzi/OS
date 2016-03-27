@@ -1,5 +1,5 @@
-OS.asm
-------
+iterami/OS.asm
+--------------
 
 A custom OS written in NASM assembly for x86 PCs.
 
