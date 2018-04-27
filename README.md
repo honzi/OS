@@ -1,6 +1,4 @@
 iterami/OS.asm
 --------------
 
-A custom OS written in NASM assembly for x86 PCs.
-
-On Linux, you can `sh linux-buildosimg.sh` to create `os.img`, which you can run using your favorite virtual machine software.
+* Contributing: https://github.com/iterami/Documentation.htm/blob/gh-pages/CONTRIBUTING.md
