@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# No arguments.
+# No args.
 
 # create os-asm.bin
 nasm -f bin kernel/kernel.asm -o os-asm.bin
